@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Написать свои реализации функций keys, values, entries для Object и Map-->
+<script>
+
+    let newObj = {
+        name: 'Alex',
+        surname: 'Orlov',
+        age: 24
+    };
+
+    let person = new Map([
+        ['name', 'Alex'],
+        ['age', 24],
+        ['man', true]
+    ]);
+
+    const getKeys = function (obj) {
+        let arr = [];
+        if (obj instanceof Map) {
+            obj.forEach((value, keys) => {
+                arr.push(keys);
+            });
+            return arr;
+        } else
+
+         if (typeof obj === 'object') {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key))
+                    arr.push(key);
+            }
+            return arr;
+        }
+    };
+    console.log(getKeys(person));
+    console.log(getKeys(newObj));
+
+    const getValues = function (obj) {
+        let arr = [];
+        if (obj instanceof Map) {
+            obj.forEach((value) => {
+                arr.push(value);
+            });
+            return arr;
+        } else
+        if (typeof obj === 'object') {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key))
+                    arr.push(obj[key]);
+            }
+            return arr;
+        }
+    };
+    console.log(getValues(newObj));
+    console.log(getValues(person));
+
+    const getEntries = function (obj) {
+        let arr = [];
+        if (obj instanceof Map) {
+            obj.forEach((value, keys) => {
+                arr.push([keys, value])
+            });
+            return arr;
+        } else
+        if (typeof obj === 'object') {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key))
+                    arr.push([key, obj[key]]);
+            }
+            return arr;
+        }
+    };
+    console.log(getEntries(newObj));
+    console.log(getEntries(person));
+</script>
+</body>
+</html>
